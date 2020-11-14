@@ -20,6 +20,7 @@
             $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
         } else {
             $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location')";
+            $sql = "INSERT INTO RegularMember (playerID) VALUES ('$id')";
         }
         if ($conn->query($sql) === TRUE) {
             echo "New user added---Your id is: ". $id;
