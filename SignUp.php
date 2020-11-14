@@ -16,12 +16,12 @@
         $location = $_POST['location'];
 
         $conn = OpenCon();
-        if ($_POST['prod']) {
-            $sql = "INSERT INTO producer (companyID, companyName, companyPW, totalProduced) VALUES ($id, $username, $password, '0')";
+        if (isset($_POST['prod'])) {
+            $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
         } else {
-            $sql = "INSERT INTO player (playerID, username, playerPW, region) VALUES ($id, $username, $password, '$location')";
+            $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location')";
         }
-        if ($conn->query($sql) === TRUE) { 
+        if ($conn->query($sql) === TRUE) {
             echo "New user added---Your id is: ". $id;
         } else {
             echo "Error : " . $conn->error;
