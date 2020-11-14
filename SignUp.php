@@ -1,35 +1,35 @@
 <?php
-    include 'connect.php';
-    // var_dump($_POST);
+include 'connect.php';
+// var_dump($_POST);
 
-    $id = 0;
-    for ($i = 1; $i <= 2; $i++) {
-        $n = floor(rand(1, 500) * 20 + 10);
-        $id = $id + $n;
-    }
-    // echo "Your id is: ". $id. "  ";
+$id = 0;
+for ($i = 1; $i <= 2; $i++) {
+    $n = floor(rand(1, 500) * 20 + 10);
+    $id = $id + $n;
+}
+// echo "Your id is: ". $id. "  ";
 
-    if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["location"])) {
+if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["location"])) {
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $location = $_POST['location'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $location = $_POST['location'];
 
-        $conn = OpenCon();
-        if (isset($_POST['prod'])) {
-            $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
-        } else {
-            $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location')";
-            $sql = "INSERT INTO RegularMember (playerID) VALUES ('$id')";
-        }
-        if ($conn->query($sql) === TRUE) {
-            echo "New user added---Your id is: ". $id;
-        } else {
-            echo "Error : " . $conn->error;
-        }
+    $conn = OpenCon();
+    if (isset($_POST['prod'])) {
+        $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
     } else {
-        echo "POST array is null";
+        $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location')";
+//             $sql .= "INSERT INTO RegularMember (playerID) VALUES ('$id');";
     }
+    if ($conn->multi_query($sql) === TRUE) {
+        echo "New user added---Your id is: " . $id;
+    } else {
+        echo "Error : " . $conn->error;
+    }
+} else {
+    echo "POST array is null";
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,8 +62,8 @@
                     <optgroup label="location">
                         <option value=Asia>Asia</option>
                         <option value=Africa>Africa</option>
-                        <option value=North America>North America</option>
-                        <option value=South America>South America</option>
+                        <option value=NorthAmerica>North America</option>
+                        <option value=SouthAmerica>South America</option>
                         <option value=Antarctica>Antarctica</option>
                         <option value=Europe>Europe</option>
                         <option value=Australia>Australia</option>

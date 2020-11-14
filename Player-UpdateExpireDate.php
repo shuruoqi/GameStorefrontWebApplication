@@ -1,17 +1,40 @@
+<?php
+include 'connect.php';
+
+
+if (isset($_POST["uAccountID"]) and isset($_POST["uExpiryDate"]) and isset($_POST['update'])) {
+
+    $uAccountID = $_POST['uAccountID'];
+    $uExpiryDate = $_POST['uExpiryDate'];
+
+    $conn = OpenCon();
+    $sql = "UPDATE BankAccount SET expiryDate='$uExpiryDate' WHERE accountID='$uAccountID'";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Expire date updated";
+    } else {
+        echo "Error : " . $conn->error;
+    }
+
+} else {
+    echo "POST array is null";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../CSS/Sidebar.css"/>
-    <link rel="stylesheet" href="../CSS/iconfont-Sidebar.css"/>
-    <title>Bank</title>
+    <link rel="stylesheet" href="../../CSS/Sidebar.css"/>
+    <link rel="stylesheet" href="../../CSS/iconfont-Sidebar.css"/>
+    <title>UpdateExpireDate</title>
 </head>
 
 <body>
 <div id="Centered">
 
     <div class="Header">
-        <img src="../ProjectIMG/Header.jpg"/>
+        <img src="../../ProjectIMG/Header.jpg"/>
     </div>
 
     <div class="MainBox">
@@ -70,61 +93,32 @@
         </div>
 
         <div class="Content">
-            <h2>Bank Account</h2>
-            <form method="POST" action="../../../../../Downloads/display.php"> <!--refresh page when submitted-->
+            <h2>Bank Account > Update Expire Date</h2>
+            <form method="POST" action="Player-AddBankAccount.php">
                 <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
+                <form method="GET" action="display.php">
+                    <select name="bank account">
+                        <optgroup label="Country/Region">
+                            <!--                            !!!!!!!!!!!!!!!!!!!!!-->
+                            <option value=Canada>RBC ****0101</option>
+                            <option value=China>BMO ****0202</option>
+                            <option value=US>TD ****0303</option>
+                            <option value=Mexico>CIBC ****0404</option>
+                        </optgroup>
+                    </select> <br/><br/>
+                </form>
 
-                <div class="BankAccount">
-                    <table border="1">
-                        <thead>
-                        <tr>
-                            <th>Bank Name</th>
-                            <th>ID</th>
-                            <th>Expire Date</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>RBC</td>
-                            <td>****0101</td>
-                            <td>2021-01-01</td>
-                        </tr>
-                        <tr>
-                            <td>BMO</td>
-                            <td>****0202</td>
-                            <td>2021-01-01</td>
-                        </tr>
-                        <tr>
-                            <td>TD</td>
-                            <td>****0303</td>
-                            <td>2021-01-01</td>
-                        </tr>
-                        <tr>
-                            <td>CIBC</td>
-                            <td>****0404</td>
-                            <td>2021-01-01</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <br/><br/>
+                <form method="POST" action="display.php"> <!--refresh page when submitted-->
+                    <input type="hidden" id="updateQueryRequest" name="updateQueryRequest">
+                    Expire Date: <input type="text" name="expiredate" placeholder="YYYY-MM-DD"> <br/><br/>
 
-                </div>
-
-                <a href="Player-AddBankAccount.html">
-                    <input class="Button" type="button" value="Add Account"/> <br/><br/>
-                </a>
-
-                <a href="Player-UpdateExpireDate.html">
-                    <input class="Button" type="button" value="Update Expire Date"/> <br/><br/>
-                </a>
-
-                <a href="Player-DeleteBankAccount.html">
-                    <input class="Button" type="button" value="Delete Account"/> <br/><br/>
-                </a>
-
+                    <!--                <a href="Player-Bank.html">-->
+                    <input class="Button" type="submit" value="Update"/> <br/><br/>
+                    <!--                </a>-->
+                </form>
             </form>
         </div>
     </div>
 </div>
+
 </body>
-</html>

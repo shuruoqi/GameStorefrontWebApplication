@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../CSS/Sidebar.css"/>
-    <link rel="stylesheet" href="../CSS/iconfont-Sidebar.css"/>
-    <title>My Games</title>
+    <link rel="stylesheet" href="../../CSS/Sidebar.css"/>
+<!--    <link rel="stylesheet" href="../CSS/Player/Player-Bank.css"/>-->
+    <link rel="stylesheet" href="../../CSS/iconfont-Sidebar.css"/>
+    <title>Gift</title>
 </head>
-
 <body>
 <div id="Centered">
 
     <div class="Header">
-        <img src="../ProjectIMG/Header.jpg"/>
+        <img src="../../ProjectIMG/Header.jpg"/>
     </div>
 
     <div class="MainBox">
@@ -70,10 +70,51 @@
         </div>
 
         <div class="Content">
-            <h2>My Games</h2>
-            <a href="../Game/GameInfo-Don'tStarve.html">Don't Starve</a> <br/><br/>
-            <a href="../Game/GameInfo-StardewValley.html">Stardew Valley</a> <br/><br/>
-            <a href="../Game/GameInfo-OxygenNotIncluded.html">Oxygen Not Included</a> <br/><br/>
+            <h2>Gift</h2>
+            <form method="POST" action="../../../../Downloads/display.php"> <!--refresh page when submitted-->
+                <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
+
+                <div class="Gift">
+                    Gifts you received: <br/><br/>
+                    <table border="1">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Value</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Welcome Package</td>
+                            <td>100exp</td>
+                            <td>2020-01-01</td>
+                        </tr>
+                        <tr>
+                            <td>Welcome Package</td>
+                            <td>100exp</td>
+                            <td>2020-01-01</td>
+                        </tr>
+                        <tr>
+                            <td>Welcome Package</td>
+                            <td>100exp</td>
+                            <td>2020-01-01</td>
+                        </tr>
+                        <tr>
+                            <td>Welcome Package</td>
+                            <td>100exp</td>
+                            <td>2020-01-01</td>
+                        </tr>
+                        <tr>
+                            <td>Welcome Package</td>
+                            <td>100exp</td>
+                            <td>2020-01-01</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/><br/>
+                </div>
+            </form>
         </div>
     </div>
 </div>

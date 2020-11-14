@@ -1,5 +1,5 @@
 CREATE TABLE BankAccount
-(accountID	  INTEGER NOT NULL,
+(accountID	  varchar(19) NOT NULL,
  bankName     varchar(50) NOT NULL,
  expiryDate   DATE NOT NULL,
  PRIMARY KEY (accountID));
@@ -12,7 +12,7 @@ CREATE TABLE Player
  PRIMARY KEY (playerID));
 
 CREATE TABLE HasBankAccount_Player
-(accountID	INTEGER NOT NULL,
+(accountID	varchar(19) NOT NULL,
  playerID	INTEGER NOT NULL,
  PRIMARY KEY (accountID, playerID),
  FOREIGN KEY (accountID) REFERENCES BankAccount(accountID),
@@ -72,14 +72,13 @@ CREATE TABLE Producer
 (companyID		    INTEGER,
  companyName	    varchar(50) NOT NULL,
  companyPW          varchar(50) NOT NULL,
- Location         varchar(50) NOT NULL,
+ location         varchar(50) NOT NULL,
  totalProduced		INTEGER,
  PRIMARY KEY (companyID),
  UNIQUE (companyName));
 
 CREATE TABLE GoldMember
 (playerID	        INTEGER NOT NULL,
- membershipRate     INTEGER NOT NULL,
  PRIMARY KEY (playerID),
  FOREIGN KEY (playerID) REFERENCES Player(playerID));
 

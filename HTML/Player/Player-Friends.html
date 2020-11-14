@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../CSS/Sidebar.css"/>
-    <link rel="stylesheet" href="../CSS/iconfont-Sidebar.css"/>
-    <title>User Information</title>
+    <link rel="stylesheet" href="../../CSS/Sidebar.css"/>
+    <link rel="stylesheet" href="../../CSS/iconfont-Sidebar.css"/>
+    <title>Friends</title>
 </head>
 
 <body>
+
 <div id="Centered">
 
     <div class="Header">
-        <img src="../ProjectIMG/Header.jpg"/>
+        <img src="../../ProjectIMG/Header.jpg"/>
     </div>
 
     <div class="MainBox">
@@ -70,23 +71,46 @@
         </div>
 
         <div class="Content">
-            <h2>Account Info</h2>
-            <img src="../ProjectIMG/ProfilePic.jpg"/>
-
+            <h2>Friends</h2>
             <form method="POST" action="../../../../Downloads/display.php"> <!--refresh page when submitted-->
                 <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
-
-                <div class="Read">
-                    User Name: <input type="text" name="username" value="SAMPLE Name" readonly> <br/><br/>
-                    ID: <input type="text" name="password" value="SAMPLE ID" readonly> <br/><br/>
-                    Location: <input type="text" name="country" value="SAMPLE Location" readonly> <br/><br/>
+                <div class="Add Friend">
+                    Potential friends:
+                    <select name="Potential friends">
+                        <optgroup label="friends">
+                            <option value=000001>000001</option>
+                            <option value=000002>000002</option>
+                            <option value=000003>000003</option>
+                        </optgroup>
+                    </select> <br/><br/>
+                    Or find by searching ID:
+                    <span class="iconfont icon-nickname"></span>
+                    <input type="text" placeholder="His/her userID"/>
+                    <a href="Player-Friends.html">
+                        <input class="Button" type="button" value="Add">
+                    </a>
                 </div>
                 <br/><br/>
-                <div class="Write">
-                    New name:
-                    <input class="read" type="text" name="username"> <a href="Player-Info.html">
-                    <input class="Button" type="button" value="Update"> <br/><br/>
-                </a>
+                <div class="Friend">
+                    Friend Lists:
+                    <table border="1">
+                        <thead>
+                        <tr>
+                            <th>Friend Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Christy</td>
+                        </tr>
+                        <tr>
+                            <td>Chrissy</td>
+                        </tr>
+                        <tr>
+                            <td>Kevin</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </form>
         </div>
