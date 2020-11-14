@@ -19,8 +19,8 @@ if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["lo
     if (isset($_POST['prod'])) {
         $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
     } else {
-        $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location')";
-//             $sql .= "INSERT INTO RegularMember (playerID) VALUES ('$id');";
+        $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location');";
+        $sql .= "INSERT INTO RegularMember (playerID) VALUES ('$id');";
     }
     if ($conn->multi_query($sql) === TRUE) {
         echo "New user added---Your id is: " . $id;
