@@ -2,9 +2,7 @@
 include 'connect.php';
 // var_dump($_POST);
 
-// if (isset($_POST['To Bank'])) {
-//         header("Location:Player-Bank.php");
-//     }
+header("Location:Player-Bank.php");
 
 $id = 0;
 for ($i = 1; $i <= 2; $i++) {
@@ -86,9 +84,6 @@ if (!empty($_POST["username"]) and !empty($_POST["password"]) and !empty($_POST[
             </div>
             <a href="Player-Bank.php">
                 <input class="SignUpButton" type="submit" value="Sign up"/>
-            </a>
-            <a href="Player-Bank.php">
-                <input class="SignUpButton" type="submit" value="To Bank"/>
             </a>
 
         </form>
