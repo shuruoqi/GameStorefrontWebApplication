@@ -9,7 +9,7 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
         $bankName = $_POST['bankName'];
         $iAccountID = $_POST['iAccountID'];
         $iExpiryDate = $_POST['iExpiryDate'];
-        $sql = "INSERT INTO BankAccount (accountID, bankName, expiryDate) VALUES ('$iAccountID','$bankName','$iExpiryDate')";
+        $sql = "INSERT INTO BankAccount (accountID, bankName, expiryDate) VALUES ('$iAccountID','$bankName','$iExpiryDate');";
         $sql .= "INSERT INTO HasBankAccount_Player (accountID, playerID) VALUES ('$iAccountID','$id')";
     } else if (isset($_POST['update'])) {
         $uAccountID = $_POST['uAccountID'];
@@ -47,49 +47,49 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
         <div class="SideBar">
             <ul>
                 <li>
-                    <a href="Player-Info.html">
+                    <a href="Player-Info.php">
                         <span class="iconfont icon-user"></span>
                         <span>Account Info</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Membership.html">
+                    <a href="Player-Membership.php">
                         <span class="iconfont icon-membership"></span>
                         <span>Membership</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-MyGames.html">
+                    <a href="Player-MyGames.php">
                         <span class="iconfont icon-game"></span>
                         <span>My Games</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Bank.html">
+                    <a href="Player-Bank.php">
                         <span class="iconfont icon-bank"></span>
                         <span>Bank Account</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Device.html">
+                    <a href="Player-Device.php">
                         <span class="iconfont icon-device"></span>
                         <span>Device</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Gift.html">
+                    <a href="Player-Gift.php">
                         <span class="iconfont icon-gift"></span>
                         <span>Gift</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Friends.html">
+                    <a href="Player-Friends.php">
                         <span class="iconfont icon-friends"></span>
                         <span>Friends</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-AllGames.html">
+                    <a href="Player-AllGames.php">
                         <span class="iconfont icon-all"></span>
                         <span>All Games</span>
                     </a>
