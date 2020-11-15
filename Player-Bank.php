@@ -2,17 +2,6 @@
 include 'connect.php';
 session_start();
 $id = $_SESSION['varname'];
-//function printResult($result)
-//{ //prints results from a select statement
-//    echo "<table>";
-//    echo "<tr><th>AccountID</th><th>BankName</th><th>ExpiryDate</th></tr>";
-//
-//    while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
-//        echo "<tr><td>" . $row["ID"] . "</td><td>" . $row["NAME"] . "</td></tr>"; //or just use "echo $row[0]"
-//    }
-//
-//    echo "</table>";
-//}
 
 if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_POST["uAccountID"]) and isset($_POST["uExpiryDate"]))) {
     $conn = OpenCon();
@@ -110,40 +99,23 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
 
         <div class="Content">
             <h3>Bank Account</h3>
-<!--            <input class="Button" type="submit" value="Get info" name="get"/> <br/><br/>-->
-            <form method="GET" action="Player-Bank.php"> <!--refresh page when submitted-->
-                <div class="BankAccount">
-                    <table border="1">
-                        <thead>
-                        <tr>
-                            <th>Bank Name</th> <th>ID</th> <th>Expire Date</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>RBC</td>
-                            <td>****0101</td>
-                            <td>2021-01-01</td>
-                        </tr>
-                        <tr>
-                            <td>BMO</td>
-                            <td>****0202</td>
-                            <td>2021-01-01</td>
-                        </tr>
-                        <tr>
-                            <td>TD</td>
-                            <td>****0303</td>
-                            <td>2021-01-01</td>
-                        </tr>
-                        <tr>
-                            <td>CIBC</td>
-                            <td>****0404</td>
-                            <td>2021-01-01</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </form>
+            <?php
+            $conn = OpenCon();
+            $query = "SELECT B.bankName, B.accountID, B.expiryDate FROM BankAccount B, HasBankAccount_Player H WHERE H.playerID = '$id' AND B.accountID = H.accountID";
+            $result = $conn->query($query);
+            if ($result->num_rows > 0) {
+                echo "<table border=1>";
+                echo "<tr><th>Bank Name</th><th>Account ID</th><th>Expiry Date</th></tr>";
+
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr> <td>" . $row["bankName"] . "</td> <td>" . $row["accountID"] . "</td> <td>" . $row["expiryDate"] . "</td> </tr>"; //or just use "echo $row[0]"
+                }
+                echo "</table>";
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
+            ?>
 
             <form method="POST" action="Player-Bank.php"> <!--refresh page when submitted-->
                 <h3>Add New Payment Method</h3>
