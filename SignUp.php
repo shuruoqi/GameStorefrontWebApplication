@@ -6,47 +6,38 @@ $id = 0;
 for ($i = 1; $i <= 2; $i++) {
     $n = floor(rand(1, 500) * 20 + 10);
     $id = $id + $n;
-    }
+}
 
 session_start();
 $_SESSION['varname'] = $id;
-// echo "Your id is: ". $id. "  ";
 
 if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["location"]) and isset($_POST['Signup'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
     $location = $_POST['location'];
-    if(!empty($_POST['type'])){
+    if (!empty($_POST['type'])) {
         $radio = $_POST['type'];
-         // echo $radio;
     }
-    // $type = $_POST['type'];
 
     $conn = OpenCon();
 
-    switch($radio){
+    switch ($radio) {
         case producer:
-        $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
-        break;
+            $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
+            break;
         case player:
-        $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location');";
-        $sql .= "INSERT INTO RegularMember (playerID) VALUES ('$id');";
-        break;
+            $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location');";
+            $sql .= "INSERT INTO RegularMember (playerID) VALUES ('$id');";
+            break;
     }
-    // if ($radio === "producer") {
-    //     $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
-    // } else {
-    //     $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location');";
-    //     $sql .= "INSERT INTO RegularMember (playerID) VALUES ('$id');";
-    // }
     if ($conn->multi_query($sql) === TRUE) {
-        header('location:popup.php');
+        header('location:Popup.php');
     } else {
         echo "Error : " . $conn->error;
     }
 } else {
-    echo "POST array is null";
+    echo "POST array is null";  //!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 ?>
@@ -68,10 +59,7 @@ if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["lo
 
         <h1>New User Sign up</h1>
         <form action="SignUp.php" method="POST"> <!--refresh page when submitted-->
-            <!-- <input type="hidden" name="ID" value="312"> -->
             <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
-            <!-- <input type="submit"> -->
-            <!-- Your ID will be <h2 id="randomnumber"></h2> -->
             <div class="inputBox">
                 <div class="inputText">
                     User Name: <input type="text" name="username"> <br/><br/>
@@ -90,7 +78,6 @@ if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["lo
                         <option value=Australia>Australia</option>
                     </optgroup>
                 </select> <br/><br/>
-                <!--                    Device: <input type="text" name="password"> * <br/><br/>-->
             </div>
 
             <div class="checkBox">
@@ -100,22 +87,10 @@ if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["lo
                 <input type="radio" id="producer" name="type" value="producer">
                 <label for="producer">Producer</label>
             </div>
-            <!-- <a href="popup.php"> -->
-                <input class="SignUpButton" type="submit" value="Sign up" name="Signup">
-            <!-- </a> -->
+            <input class="SignUpButton" type="submit" value="Sign up" name="Signup">
 
         </form>
     </div>
 </div>
 </body>
-
-<!-- <script>
-    var rndnumb = "";
-    for (i = 1; i <= 2; i++) {
-        n = Math.floor(Math.random() * 89999 + 10000);
-        rndnumb = rndnumb + n;
-    }
-    document.getElementById("randomnumber").innerHTML = rndnumb;
-</script> -->
-
 </html>

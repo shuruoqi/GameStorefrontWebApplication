@@ -1,6 +1,7 @@
 <?php
 include 'connect.php';
-
+session_start();
+$id = $_SESSION['varname'];
 //function printResult($result)
 //{ //prints results from a select statement
 //    echo "<table>";
@@ -20,6 +21,7 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
         $iAccountID = $_POST['iAccountID'];
         $iExpiryDate = $_POST['iExpiryDate'];
         $sql = "INSERT INTO BankAccount (accountID, bankName, expiryDate) VALUES ('$iAccountID','$bankName','$iExpiryDate')";
+        $sql .= "INSERT INTO HasBankAccount_Player (accountID, playerID) VALUES ('$iAccountID','$id')";
     } else if (isset($_POST['update'])) {
         $uAccountID = $_POST['uAccountID'];
         $uExpiryDate = $_POST['uExpiryDate'];
@@ -143,28 +145,20 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
                 </div>
             </form>
 
-            <!--                <a href="Player-AddBankAccount.html">-->
-            <!--                    <input class="Button" type="button" value="Add Account"/> <br/><br/>-->
-            <!--                </a>-->
             <form method="POST" action="Player-Bank.php"> <!--refresh page when submitted-->
                 <h3>Add New Payment Method</h3>
                 Bank Name: <input type="text" name="bankName"> <br/><br/>
                 Account ID: <input type="text" name="iAccountID" placeholder="xxxx-xxxx-xxxx-xxxx"> <br/><br/>
                 Expiry Date: <input type="text" name="iExpiryDate" placeholder="YYYY-MM-DD">
                 <input class="Button" type="submit" value="Add" name="insert"/> <br/><br/>
-                <!--                <a href="Player-UpdateExpireDate.html">-->
-                <!--                    <input class="Button" type="button" value="Update Expire Date"/> <br/><br/>-->
-                <!--                </a>-->
+
                 <h3>Update Expire Date</h3>
                 Account ID: <input type="text" name="uAccountID" placeholder="xxxx-xxxx-xxxx-xxxx"> <br/><br/>
                 Expiry Date: <input type="text" name="uExpiryDate" placeholder="YYYY-MM-DD">
                 <input class="Button" type="submit" value="Update" name="update"/> <br/><br/>
 
                 <h3>Delete Account</h3>
-                <!--                <a href="Player-DeleteBankAccount.html">-->
                 <input class="Button" type="button" value="Delete"/> <br/><br/>
-                <!--                </a>-->
-
             </form>
         </div>
     </div>
