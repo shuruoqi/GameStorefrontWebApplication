@@ -25,17 +25,12 @@ CREATE TABLE IsFriendOf
  FOREIGN KEY (playerID1) REFERENCES Player(playerID),
  FOREIGN KEY (playerID2) REFERENCES Player(playerID));
 
-CREATE TABLE Device
-(deviceID	INTEGER,
- devicename	varchar(50),
- PRIMARY KEY (deviceID));
-
 CREATE TABLE HasPlayer_Device
 (playerID		INTEGER NOT NULL,
  deviceID		INTEGER NOT NULL,
+ deviceName	    varchar(50),
  PRIMARY KEY (playerID, deviceID),
- FOREIGN KEY (playerID) REFERENCES Player(playerID),
- FOREIGN KEY (deviceID) REFERENCES Device (deviceID));
+ FOREIGN KEY (playerID) REFERENCES Player(playerID));
 
 CREATE TABLE Game
 (gameID			INTEGER,
