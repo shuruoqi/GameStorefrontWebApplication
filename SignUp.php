@@ -2,6 +2,10 @@
 include 'connect.php';
 // var_dump($_POST);
 
+// if (isset($_POST['To Bank'])) {
+//         header("Location:Player-Bank.php");
+//     }
+
 $id = 0;
 for ($i = 1; $i <= 2; $i++) {
     $n = floor(rand(1, 500) * 20 + 10);
@@ -9,14 +13,15 @@ for ($i = 1; $i <= 2; $i++) {
 }
 // echo "Your id is: ". $id. "  ";
 
-if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["location"])) {
+if (!empty($_POST["username"]) and !empty($_POST["password"]) and !empty($_POST["location"])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
     $location = $_POST['location'];
+    $type = $_POST['type'];
 
     $conn = OpenCon();
-    if (isset($_POST['prod'])) {
+    if ($type === 'producer') {
         $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
     } else {
         $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location');";
@@ -74,14 +79,16 @@ if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["lo
 
             <div class="checkBox">
                 Select a account type:<br/><br/>
-                <input type="radio" id="player" name="reg" value="dewey">
+                <input type="radio" id="player" name="type" value="player">
                 <label for="regularmember">Player</label> * <br/><br/>
-                <input type="radio" id="producer" name="prod" value="louie">
+                <input type="radio" id="producer" name="type" value="producer">
                 <label for="producer">Producer</label>
             </div>
-
-            <a href="PopUp.php">
+            <a href="Player-Bank.php">
                 <input class="SignUpButton" type="submit" value="Sign up"/>
+            </a>
+            <a href="Player-Bank.php">
+                <input class="SignUpButton" type="submit" value="To Bank"/>
             </a>
 
         </form>
