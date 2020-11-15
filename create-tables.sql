@@ -57,7 +57,7 @@ CREATE TABLE HasPlayer_Game_Accomplishment
  accomplishmentID   INTEGER NOT NULL,
  rating				INTEGER,
  timeSpent			INTEGER,
- obtainedDate 		INTEGER,
+ obtainedDate 		DATE NOT NULL,
  PRIMARY KEY (playerID, gameID, accomplishmentID),
  FOREIGN KEY (playerID) REFERENCES Player(playerID),
  FOREIGN KEY (GameID) REFERENCES Game(gameID),

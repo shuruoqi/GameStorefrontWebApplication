@@ -25,8 +25,6 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
     } else {
         echo "Error : " . $conn->error;
     }
-} else {
-    echo "POST array is null";
 }
 ?>
 

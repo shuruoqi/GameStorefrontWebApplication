@@ -8,8 +8,8 @@ $var_value = $_SESSION['varname'];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../CSS/Center.css"/>
-    <link rel="stylesheet" href="../CSS/PopUp.css"/>
+    <link rel="stylesheet" href="CSS/Center.css"/>
+    <link rel="stylesheet" href="CSS/PopUp.css"/>
     <title>Successful</title>
 </head>
 <body>

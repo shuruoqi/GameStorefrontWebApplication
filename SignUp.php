@@ -12,16 +12,13 @@ session_start();
 $_SESSION['varname'] = $id;
 
 if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["location"]) and isset($_POST['Signup'])) {
-
     $username = $_POST['username'];
     $password = $_POST['password'];
     $location = $_POST['location'];
     if (!empty($_POST['type'])) {
         $radio = $_POST['type'];
     }
-
     $conn = OpenCon();
-
     switch ($radio) {
         case producer:
             $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
@@ -36,8 +33,6 @@ if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["lo
     } else {
         echo "Error : " . $conn->error;
     }
-} else {
-    echo "POST array is null";  //!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 ?>
