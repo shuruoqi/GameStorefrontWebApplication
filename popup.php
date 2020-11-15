@@ -31,8 +31,7 @@ $var_value = $_SESSION['varname'];
 
         <h3>Successful!</h3>
         <form method="POST" action="SignIn.php"> <!--refresh page when submitted-->
-            <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
-            <!-- <input class="loginButton" type="button" value="<?php echo $id?>"> -->
+            <!-- <input type="hidden" id="insertQueryRequest" name="insertQueryRequest"> -->
             Your ID is <h2 value="<?php echo $var_value?>"><?php echo $var_value?></h2>
             <p> Please be reminded that this ID number will be asked every time you log-in </p>
             <a href="SignIn.php">

@@ -6,14 +6,13 @@ $id = 0;
 for ($i = 1; $i <= 2; $i++) {
     $n = floor(rand(1, 500) * 20 + 10);
     $id = $id + $n;
+    }
 
 session_start();
 $_SESSION['varname'] = $id;
-
-}
 // echo "Your id is: ". $id. "  ";
 
-if (!empty($_POST["username"]) and !empty($_POST["password"]) and !empty($_POST["location"])) {
+if (isset($_POST["username"]) and isset($_POST["password"]) and isset($_POST["location"]) and isset($_POST['Signup'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -25,14 +24,24 @@ if (!empty($_POST["username"]) and !empty($_POST["password"]) and !empty($_POST[
     // $type = $_POST['type'];
 
     $conn = OpenCon();
-    if ($radio === "producer") {
+
+    switch($radio){
+        case producer:
         $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
-    } else {
+        break;
+        case player:
         $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location');";
         $sql .= "INSERT INTO RegularMember (playerID) VALUES ('$id');";
+        break;
     }
+    // if ($radio === "producer") {
+    //     $sql = "INSERT INTO producer (companyID, companyName, companyPW, location,totalProduced) VALUES ('$id', '$username','$password','$location','0')";
+    // } else {
+    //     $sql = "INSERT INTO player (playerID, username, playerPW, location) VALUES ('$id', '$username', '$password', '$location');";
+    //     $sql .= "INSERT INTO RegularMember (playerID) VALUES ('$id');";
+    // }
     if ($conn->multi_query($sql) === TRUE) {
-        echo "New user added---Your id is: " . $id;
+        header('location:popup.php');
     } else {
         echo "Error : " . $conn->error;
     }
@@ -40,9 +49,6 @@ if (!empty($_POST["username"]) and !empty($_POST["password"]) and !empty($_POST[
     echo "POST array is null";
 }
 
-// if ((!empty($_POST["Sign up"]))){
-//   echo("<input type=button value=\"Sign up\" onclick=\"location.href='Player-Bank.php'\">");
-// }
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +67,7 @@ if (!empty($_POST["username"]) and !empty($_POST["password"]) and !empty($_POST[
     <div class="MainBox">
 
         <h1>New User Sign up</h1>
-        <form action="popup.php" method="POST"> <!--refresh page when submitted-->
+        <form action="SignUp.php" method="POST"> <!--refresh page when submitted-->
             <!-- <input type="hidden" name="ID" value="312"> -->
             <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
             <!-- <input type="submit"> -->
@@ -94,9 +100,9 @@ if (!empty($_POST["username"]) and !empty($_POST["password"]) and !empty($_POST[
                 <input type="radio" id="producer" name="type" value="producer">
                 <label for="producer">Producer</label>
             </div>
-            <a href="popup.php?varname=<?php echo $id ?>">
-                <input class="SignUpButton" type="submit" value="Sign up">
-            </a>
+            <!-- <a href="popup.php"> -->
+                <input class="SignUpButton" type="submit" value="Sign up" name="Signup">
+            <!-- </a> -->
 
         </form>
     </div>
