@@ -3,7 +3,7 @@ include 'connect.php';
 session_start();
 $id = $_SESSION['currentID'];
 
-if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_POST["uAccountID"]) and isset($_POST["uExpiryDate"]))) {
+if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_POST["uAccountID"]) and isset($_POST["toBeDeleted"]))) {
     $conn = OpenCon();
     if (isset($_POST['bankName']) and isset($_POST['insert'])) {
         $bankName = $_POST['bankName'];
@@ -16,7 +16,7 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
         $uExpiryDate = $_POST['uExpiryDate'];
         $sql = "UPDATE BankAccount SET expiryDate='$uExpiryDate' WHERE accountID= '$uAccountID';";
     } else if (isset($_POST['delete'])) {
-        $dAccountID = $_POST['dAccountID'];
+        $dAccountID = $_POST['toBeDeleted'];
         $sql = "DELETE FROM HasBankAccount_Player WHERE accountID = '$dAccountID';";
         $sql .= "DELETE FROM BankAccount WHERE accountID = '$dAccountID'";
     }
@@ -118,9 +118,8 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
                     }
                     echo "</table>";
                 } else {
-                    echo "0 results";
+                    echo "No account";
                 }
-                $conn->close();
                 ?>
 
                 <h3>Add New Payment Method</h3>
@@ -130,12 +129,40 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
                 <input class="Button" type="submit" value="Add" name="insert"/> <br/><br/>
 
                 <h3>Update Expire Date</h3>
-                Account ID: <input type="text" name="uAccountID" placeholder="xxxx-xxxx-xxxx-xxxx"> <br/><br/>
+                Account ID:
+                <?php
+                $conn = OpenCon();
+                $query = "SELECT accountID FROM HasBankAccount_Player H WHERE H.playerID = '$id'";
+                $result = $conn->query($query);
+                if ($result->num_rows > 0) {
+                    echo "<select name=uAccountID>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['accountID'] . "'>" . $row['accountID'] . "</option>";
+                    }
+                    echo "</select>";
+                } else {
+                    echo "No account";
+                }
+                ?><br/><br/>
                 Expiry Date: <input type="text" name="uExpiryDate" placeholder="YYYY-MM-DD">
                 <input class="Button" type="submit" value="Update" name="update"/> <br/><br/>
 
                 <h3>Delete Account</h3>
-                Account ID: <input type="text" name="dAccountID" placeholder="xxxx-xxxx-xxxx-xxxx">
+                Account ID:
+                <?php
+                $conn = OpenCon();
+                $query = "SELECT accountID FROM HasBankAccount_Player H WHERE H.playerID = '$id'";
+                $result = $conn->query($query);
+                if ($result->num_rows > 0) {
+                    echo "<select name=toBeDeleted>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['accountID'] . "'>" . $row['accountID'] . "</option>";
+                    }
+                    echo "</select>";
+                } else {
+                    echo "No account";
+                }
+                ?>
                 <input class="Button" type="submit" value="Delete" name="delete"/> <br/><br/>
             </form>
         </div>
