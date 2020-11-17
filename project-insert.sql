@@ -22,17 +22,11 @@ INSERT INTO IsFriendOf VALUES(1, 4);
 INSERT INTO IsFriendOf VALUES(2, 5);
 INSERT INTO IsFriendOf VALUES(3, 4);
 
-INSERT INTO Device VALUES(1, 'macbook pro');
-INSERT INTO Device VALUES(2, 'desktop1');
-INSERT INTO Device VALUES(3, 'desktop2');
-INSERT INTO Device VALUES(4, 'asus');
-INSERT INTO Device VALUES(5, 'iphone');
-
-INSERT INTO HasPlayer_Device VALUES(1, 5);
-INSERT INTO HasPlayer_Device VALUES(2, 4);
-INSERT INTO HasPlayer_Device VALUES(3, 3);
-INSERT INTO HasPlayer_Device VALUES(4, 2);
-INSERT INTO HasPlayer_Device VALUES(5, 1);
+INSERT INTO HasPlayer_Device VALUES(1, 5, 'macbook pro');
+INSERT INTO HasPlayer_Device VALUES(2, 4, 'desktop1');
+INSERT INTO HasPlayer_Device VALUES(3, 3, 'desktop2');
+INSERT INTO HasPlayer_Device VALUES(4, 2, 'asus');
+INSERT INTO HasPlayer_Device VALUES(5, 1, 'iphone');
 
 INSERT INTO Game VALUES(1, 'CyberPunk2077', 'RPG', '1.0');
 INSERT INTO Game VALUES(2, 'Dont Starve', 'RPG', '2.0');
@@ -46,13 +40,13 @@ INSERT INTO Game VALUES(9, 'The Sims', 'Simulation', '3.0');
 
 INSERT INTO Accomplishment2 VALUES('100exp', 'gold'); 
 INSERT INTO Accomplishment2 VALUES('90exp', 'silver'); 
-INSERT INTO Accomplishment2 VALUES('80exp', 'bronze'; 
+INSERT INTO Accomplishment2 VALUES('80exp', 'bronze'); 
 INSERT INTO Accomplishment2 VALUES('500exp', 'diamond'); 
 INSERT INTO Accomplishment2 VALUES('1000exp', 'ultimate'); 
 
 INSERT INTO Accomplishment VALUES(1, 'gold'); 
 INSERT INTO Accomplishment VALUES(2, 'silver'); 
-INSERT INTO Accomplishment VALUES(3, 'bronze'; 
+INSERT INTO Accomplishment VALUES(3, 'bronze'); 
 INSERT INTO Accomplishment VALUES(4, 'diamond'); 
 INSERT INTO Accomplishment VALUES(5, 'ultimate'); 
 
@@ -108,12 +102,3 @@ INSERT INTO PublishUpdateGame VALUES(9, 3, '2000-01-01');
 INSERT INTO ReceivesGoldMember_Gift VALUES(1, 5, '2020-10-01');
 INSERT INTO ReceivesGoldMember_Gift VALUES(2, 4, '2020-10-01');
 INSERT INTO ReceivesGoldMember_Gift VALUES(3, 2, '2020-10-01');
-
-
-
-
-
-
-
-
-
