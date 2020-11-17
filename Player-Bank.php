@@ -3,6 +3,22 @@ include 'connect.php';
 session_start();
 $id = $_SESSION['currentID'];
 
+function accounts() {
+    $id = $_SESSION['currentID'];
+    $conn = OpenCon();
+    $query = "SELECT accountID FROM HasBankAccount_Player H WHERE H.playerID = '$id'";
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        echo "<select name=uAccountID>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value='" . $row['accountID'] . "'>" . $row['accountID'] . "</option>";
+        }
+        echo "</select>";
+    } else {
+        echo "No account";
+    }
+}
+
 if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_POST["uAccountID"]) and isset($_POST["toBeDeleted"]))) {
     $conn = OpenCon();
     if (isset($_POST['bankName']) and isset($_POST['insert'])) {
@@ -127,40 +143,12 @@ if ((isset($_POST["iAccountID"]) and isset($_POST["iExpiryDate"])) || (isset($_P
                 <input class="Button" type="submit" value="Add" name="insert"/> <br/><br/>
 
                 <h3>Update Expire Date</h3>
-                Account ID:
-                <?php
-                $conn = OpenCon();
-                $query = "SELECT accountID FROM HasBankAccount_Player H WHERE H.playerID = '$id'";
-                $result = $conn->query($query);
-                if ($result->num_rows > 0) {
-                    echo "<select name=uAccountID>";
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['accountID'] . "'>" . $row['accountID'] . "</option>";
-                    }
-                    echo "</select>";
-                } else {
-                    echo "No account";
-                }
-                ?><br/><br/>
+                Account ID: <?php accounts();?><br/><br/>
                 Expiry Date: <input type="text" name="uExpiryDate" placeholder="YYYY-MM-DD">
                 <input class="Button" type="submit" value="Update" name="update"/> <br/><br/>
 
                 <h3>Delete Account</h3>
-                Account ID:
-                <?php
-                $conn = OpenCon();
-                $query = "SELECT accountID FROM HasBankAccount_Player H WHERE H.playerID = '$id'";
-                $result = $conn->query($query);
-                if ($result->num_rows > 0) {
-                    echo "<select name=toBeDeleted>";
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['accountID'] . "'>" . $row['accountID'] . "</option>";
-                    }
-                    echo "</select>";
-                } else {
-                    echo "No account";
-                }
-                ?>
+                Account ID: <?php accounts();?>
                 <input class="Button" type="submit" value="Delete" name="delete"/> <br/><br/>
             </form>
         </div>

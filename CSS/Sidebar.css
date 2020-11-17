@@ -106,3 +106,13 @@ li:hover { /*hover表示鼠标放上去之后的变化*/
     border-radius: 20px; /* 按钮圆角边 */
     background-color: #5F8C43;
 }
+
+#Centered .MainBox .Content .Button1 {
+    text-align: center;
+    width: 125px;
+    height: 20px;
+    color: white; /* 按钮字体颜色 */
+    border: 0; /* 删除按钮边框 */
+    border-radius: 20px; /* 按钮圆角边 */
+    background-color: #5a9fc4;
+}
