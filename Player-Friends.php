@@ -44,7 +44,7 @@ if (isset($_POST["friendID"])) {
         <div class="SideBar">
             <ul>
                 <li>
-                    <a href=" ">
+                    <a href="Player-Info.php">
                         <span class="iconfont icon-user"></span>
                         <span>Account Info</span>
                     </a>
@@ -116,15 +116,7 @@ if (isset($_POST["friendID"])) {
 
             <form method="POST" action="Player-Friends.php"> <!--refresh page when submitted-->
                 <div class="Add Friend">
-                    Potential friends:
-                    <select name="Potential friends">
-                        <optgroup label="friends">
-                            <option value=000001>000001</option>
-                            <option value=000002>000002</option>
-                            <option value=000003>000003</option>
-                        </optgroup>
-                    </select> <br/><br/>
-                    Or find by searching ID:
+                    find by searching ID:
                     <span class="iconfont icon-nickname"></span>
                     <input type="text" placeholder="His/her userID" name="friendID">
                     <a href="Player-Friends.php">
