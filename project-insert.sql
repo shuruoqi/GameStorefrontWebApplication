@@ -12,7 +12,7 @@ INSERT INTO Player VALUES(5, 'anon5', 'htrt', 'Asia');
 
 INSERT INTO HasBankAccount_Player VALUES(1, 1);
 INSERT INTO HasBankAccount_Player VALUES(2, 2);
-INSERT INTO HasBankAccount_Player VALUES(3. 3);
+INSERT INTO HasBankAccount_Player VALUES(3, 3);
 INSERT INTO HasBankAccount_Player VALUES(4, 4);
 INSERT INTO HasBankAccount_Player VALUES(5, 5);
 
