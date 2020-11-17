@@ -18,7 +18,7 @@ if (isset($_POST["UserID"]) and isset($_POST["Password"])) {
             $result = mysqli_query($conn, $sql) or die("Failed to query database " . mysql_error());
             $row = mysqli_fetch_array($result);
             if ($row['companyID'] === $userID && $row['companyPW'] === $password) {
-                header('location:Player-Bank.php');
+                header('location:Player-Info.php');
             } else {
                 echo "Failed to login!";
             }
@@ -28,7 +28,7 @@ if (isset($_POST["UserID"]) and isset($_POST["Password"])) {
             $result = mysqli_query($conn, $sql) or die("Failed to query database " . mysql_error());
             $row = mysqli_fetch_array($result);
             if ($row['playerID'] === $userID && $row['playerPW'] === $password) {
-                header('location:Player-Bank.php');
+                header('location:Player-Info.php');
             } else {
                 echo "Failed to login!";
             }

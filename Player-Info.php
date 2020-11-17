@@ -14,8 +14,6 @@ if (isset($_POST["username"]) and isset($_POST['Update'])) {
     } else {
         echo "Error : " . $conn->error;
     }
-} else {
-    echo "POST array is null";
 }
 
 ?>
