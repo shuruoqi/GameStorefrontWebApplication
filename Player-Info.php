@@ -3,7 +3,7 @@ include 'connect.php';
 session_start();
 $id = $_SESSION['currentID'];
 
-if (isset($_POST["username"]) and isset($_POST['Update'])){
+if (isset($_POST["username"]) and isset($_POST['Update'])) {
     $conn = OpenCon();
 
     $username = $_POST['username'];
@@ -16,16 +16,16 @@ if (isset($_POST["username"]) and isset($_POST['Update'])){
     }
 } else {
     echo "POST array is null";
-  }
+}
 
-// ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../CSS/Sidebar.css"/>
-    <link rel="stylesheet" href="../../CSS/iconfont-Sidebar.css"/>
+    <link rel="stylesheet" href="CSS/Sidebar.css"/>
+    <link rel="stylesheet" href="CSS/iconfont-Sidebar.css"/>
     <title>User Information</title>
 </head>
 
@@ -33,7 +33,7 @@ if (isset($_POST["username"]) and isset($_POST['Update'])){
 <div id="Centered">
 
     <div class="Header">
-        <img src="../../ProjectIMG/Header.jpg"/>
+        <img src="ProjectIMG/Header.jpg"/>
     </div>
 
     <div class="MainBox">
@@ -41,49 +41,49 @@ if (isset($_POST["username"]) and isset($_POST['Update'])){
         <div class="SideBar">
             <ul>
                 <li>
-                    <a href="Player-Info.html">
+                    <a href="Player-Info.php">
                         <span class="iconfont icon-user"></span>
                         <span>Account Info</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Membership.html">
+                    <a href="Player-Membership.php">
                         <span class="iconfont icon-membership"></span>
                         <span>Membership</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-MyGames.html">
+                    <a href="Player-MyGames.php">
                         <span class="iconfont icon-game"></span>
                         <span>My Games</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Bank.html">
+                    <a href="Player-Bank.php">
                         <span class="iconfont icon-bank"></span>
                         <span>Bank Account</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Device.html">
+                    <a href="Player-Device.php">
                         <span class="iconfont icon-device"></span>
                         <span>Device</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Gift.html">
+                    <a href="Player-Gift.php">
                         <span class="iconfont icon-gift"></span>
                         <span>Gift</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-Friends.html">
+                    <a href="Player-Friends.php">
                         <span class="iconfont icon-friends"></span>
                         <span>Friends</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Player-AllGames.html">
+                    <a href="Player-AllGames.php">
                         <span class="iconfont icon-all"></span>
                         <span>All Games</span>
                     </a>
@@ -93,31 +93,29 @@ if (isset($_POST["username"]) and isset($_POST['Update'])){
 
         <div class="Content">
             <h2>Account Info</h2>
-            <img src="../../ProjectIMG/ProfilePic.jpg"/>
+            <img src="ProjectIMG/ProfilePic.jpg"/>
 
             <form method="POST" action="Player-Info.php"> <!--refresh page when submitted-->
-                <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
 
                 <div class="Read">
-                  <?php
-                  $conn = OpenCon();
-                  $query = "SELECT P.username, P.playerID, P.location FROM Player P WHERE P.playerID = '$id'";
-                  $result = $conn->query($query);
-                  $row = $result->fetch_assoc();
+                    <?php
+                    $conn = OpenCon();
+                    $query = "SELECT P.username, P.playerID, P.location FROM Player P WHERE P.playerID = '$id'";
+                    $result = $conn->query($query);
+                    $row = $result->fetch_assoc();
 
-                  echo "User Name: " . $row["username"] . "<br/><br/>";
-                  echo "ID :" . $row["playerID"] . "<br/><br/>";
-                  echo "Location: " . $row["location"] . "<br/><br/>";
+                    echo "User Name: " . $row["username"] . "<br/><br/>";
+                    echo "ID :" . $row["playerID"] . "<br/><br/>";
+                    echo "Location: " . $row["location"] . "<br/><br/>";
 
-                  $conn->close();
-                  ?>
-
+                    $conn->close();
+                    ?>
                 </div>
                 <br/><br/>
                 <div class="Write">
                     New name: <input class="read" type="text" name="username">
                     <input class="Button" type="submit" name="Update" value="Update"> <br/><br/>
-                </a>
+                    </a>
                 </div>
             </form>
         </div>
