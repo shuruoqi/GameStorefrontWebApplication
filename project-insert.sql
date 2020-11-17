@@ -1,8 +1,8 @@
-INSERT INTO BankAccount VALUES(1, 'TD', '2020-10-23');
-INSERT INTO BankAccount VALUES(2, 'BMO', '2020-11-23');
-INSERT INTO BankAccount VALUES(3, 'CIBC', '2020-10-24');
-INSERT INTO BankAccount VALUES(4, 'RBC', '2023-10-23');
-INSERT INTO BankAccount VALUES(5, 'Scotia', '2020-10-23');
+INSERT INTO BankAccount VALUES('1111-1111-1111-1111', 'TD', '2020-10-23');
+INSERT INTO BankAccount VALUES('2222-2222-2222-2222', 'BMO', '2020-11-23');
+INSERT INTO BankAccount VALUES('3333-3333-3333-3333', 'CIBC', '2020-10-24');
+INSERT INTO BankAccount VALUES('4444-4444-4444-4444', 'RBC', '2023-10-23');
+INSERT INTO BankAccount VALUES('5555-5555-5555-5555', 'Scotia', '2020-10-23');
 
 INSERT INTO Player VALUES(1, 'anon1', '12345', 'Asia');
 INSERT INTO Player VALUES(2, 'john', 's122135', 'Africa');
@@ -10,11 +10,11 @@ INSERT INTO Player VALUES(3, 'jane', 'err45', 'North America');
 INSERT INTO Player VALUES(4, 'smith', '67675u7', 'Europe');
 INSERT INTO Player VALUES(5, 'anon5', 'htrt', 'Asia');
 
-INSERT INTO HasBankAccount_Player VALUES(1, 1);
-INSERT INTO HasBankAccount_Player VALUES(2, 2);
-INSERT INTO HasBankAccount_Player VALUES(3, 3);
-INSERT INTO HasBankAccount_Player VALUES(4, 4);
-INSERT INTO HasBankAccount_Player VALUES(5, 5);
+INSERT INTO HasBankAccount_Player VALUES('1111-1111-1111-1111', 1);
+INSERT INTO HasBankAccount_Player VALUES('2222-2222-2222-2222', 2);
+INSERT INTO HasBankAccount_Player VALUES('3333-3333-3333-3333', 3);
+INSERT INTO HasBankAccount_Player VALUES('4444-4444-4444-4444', 4);
+INSERT INTO HasBankAccount_Player VALUES('5555-5555-5555-5555', 5);
 
 INSERT INTO IsFriendOf VALUES(1, 2);
 INSERT INTO IsFriendOf VALUES(1, 3);
