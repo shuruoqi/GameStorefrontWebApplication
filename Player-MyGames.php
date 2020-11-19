@@ -105,7 +105,7 @@ if (isset($_POST['gID'])) {
                         echo "<tr><th>Game Name</th><th>Game Type</th><th>Version</th></tr>";
 
                         while ($row = $result->fetch_assoc()) {
-                            echo "<tr> <td>" . "<a href=". "GameInfo-".$row["gameName"].".php>".$row["gameName"]. "</a>". "</td> <td>" . $row["gameType"] . "</td> <td>" . $row["latestVersion"] . "</td> </tr>"; 
+                            echo "<tr> <td>" . "<a href=". "GameInfo-".str_replace(' ', '', $row["gameName"]).".php>".$row["gameName"]. "</a>". "</td> <td>" . $row["gameType"] . "</td> <td>" . $row["latestVersion"] . "</td> </tr>"; 
                         }
                         echo "</table>";
                     } else {
