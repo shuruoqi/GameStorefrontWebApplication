@@ -99,8 +99,6 @@ if (isset($_POST["uAccountID"])) {
         <div class="Content">
             <h2>Membership</h2>
             <form method="POST" action="Player-Membership.php"> <!--refresh page when submitted-->
-                <input type="hidden" id="insertQueryRequest" name="insertQueryRequest">
-
                 <div class="Read">
                     Current Membership:
                     <?php

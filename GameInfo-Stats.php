@@ -1,18 +1,5 @@
 <?php
 include 'connect.php';
-function gameList()
-{
-    $conn = OpenCon();
-    $query = "SELECT gameName FROM Game ";
-    $result = $conn->query($query);
-    if ($result->num_rows > 0) {
-        echo "<select name=GameName>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row['gameName'] . "'>" . $row['gameName'] . "</option>";
-        }
-        echo "</select>";
-    }
-}
 
 function typeList()
 {
@@ -106,17 +93,31 @@ function typeList()
                 <h2>Global gaming stats</h2>
                 <div class="MaxLength">
                     Max gaming length of
-                    <?php gameList(); ?>
+                    <?php
+                    $conn = OpenCon();
+                    $query = "SELECT gameName FROM Game ";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        echo "<select name=lGameName>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['gameName'] . "'>" . $row['gameName'] . "</option>";
+                        }
+                        echo "</select>";
+                    }
+                    ?>
                     in each Region
                     <input class="Button" type="submit" value="Search" name="lSearch"/> <br/><br/>
                     <?php
                     $conn = OpenCon();
                     if (isset($_POST['lSearch'])) {
-                        $GameName = $_POST['GameName'];
-                        $query = "SELECT MAX(H.timeSpent), P.location FROM HasPlayer_Game_Accomplishment H, Player P, Game G WHERE H.playerID = P.playerID AND H.gameID = G.gameID AND G.gameName = '$GameName' GROUP BY P.location";
+                        $GameName = $_POST['lGameName'];
+                        $query = "SELECT MAX(H.timeSpent), P.location 
+                                    FROM HasPlayer_Game_Accomplishment H, Player P, Game G 
+                                    WHERE H.playerID = P.playerID AND H.gameID = G.gameID AND G.gameName = '$GameName' 
+                                    GROUP BY P.location";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {
-                            echo $_POST['GameName'];
+                            echo $_POST['lGameName'];
                             echo "<table border=1>";
                             echo "<tr><th>Location</th><th>Max time spent (hours)</th></tr>";
                             while ($row = $result->fetch_assoc()) {
@@ -132,22 +133,33 @@ function typeList()
                 <br/><br/>
 
                 <div class="PlayerNum">
-                    Player numbers of <?php gameList(); ?> in each Region (min gaming length
+                    Player numbers of
+                    <?php
+                    $conn = OpenCon();
+                    $query = "SELECT gameName FROM Game ";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        echo "<select name=nGameName>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['gameName'] . "'>" . $row['gameName'] . "</option>";
+                        }
+                        echo "</select>";
+                    } ?> in each Region (min gaming length
                     <input type="text" name="length" value=0> hours)
                     <input class="Button" type="submit" value="Search" name="nSearch"/> <br/><br/>
                     <?php
                     $conn = OpenCon();
                     if (isset($_POST['length']) and isset($_POST['nSearch'])) {
-                        $GameName = $_POST['GameName'];
+                        $GameName = $_POST['nGameName'];
                         $length = $_POST['length'];
                         $query = "SELECT COUNT(*), P.location 
                                     FROM HasPlayer_Game_Accomplishment H, Player P, Game G 
                                     WHERE H.playerID = P.playerID AND H.gameID = G.gameID AND G.gameName = '$GameName' 
                                     GROUP BY P.location 
-                                    HAVING MIN(H.timeSpent)>'$length'";
+                                    HAVING MIN(H.timeSpent)>='$length'";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {
-                            echo $_POST['GameName'];
+                            echo $_POST['nGameName'];
                             echo "<table border=1>";
                             echo "<tr><th>Location</th><th>Num of players</th></tr>";
                             while ($row = $result->fetch_assoc()) {
@@ -163,13 +175,25 @@ function typeList()
                 <br/><br/>
 
                 <div class="MaxAvg">
-                    Games that has max avg gaming length of type <?php typeList(); ?>
+                    Games that has max avg gaming length of type
+                    <?php
+                    $conn = OpenCon();
+                    $query = "SELECT DISTINCT gameType FROM Game ";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        echo "<select name=GameType>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['gameType'] . "'>" . $row['gameType'] . "</option>";
+                        }
+                        echo "</select>";
+                    }
+                    ?>
                     <input class="Button" type="submit" value="Search" name="aSearch"/> <br/><br/>
                     <?php
                     $conn = OpenCon();
                     if (isset($_POST['aSearch'])) {
                         $GameType = $_POST['GameType'];
-                        $query = "SELECT G.name, MAX(H.timeSpent)  
+                        $query = "SELECT G.name, AVG(H.timeSpent)  
                                     FROM HasPlayer_Game_Accomplishment H, Game G 
                                     WHERE H.gameID = G.gameID AND G.gameType = '$GameType' 
                                     GROUP BY G.name 
