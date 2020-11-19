@@ -71,7 +71,7 @@
 
         <div class="Content">
             <h2>All Games</h2>
-            <a href="GameInfo-Don'tStarve.php">Don't Starve</a> <br/><br/>
+            <a href="GameInfo-DontStarve.php">Don't Starve</a> <br/><br/>
             <a href="GameInfo-StardewValley.php">Stardew Valley</a> <br/><br/>
             <a href="GameInfo-OxygenNotIncluded.php">Oxygen Not Included</a> <br/><br/>
             <a href="GameInfo-PlantsVSZombies.php">Plants vs Zombies</a> <br/><br/>
