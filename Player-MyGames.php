@@ -115,7 +115,6 @@ if (isset($_POST['gID'])) {
                 <h2>Buy Games</h2>
                 <?php
                     $conn = OpenCon();
-                    // only show games player dont own
                     $query = "SELECT DISTINCT g.gameName, g.gameID FROM Game g, HasPlayer_Game_Accomplishment H WHERE H.playerID = '$id' AND g.gameID <> H.gameID";
                     $result = $conn->query($query);
                     if ($result->num_rows > 0) {
