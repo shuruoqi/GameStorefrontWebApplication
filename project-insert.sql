@@ -99,6 +99,6 @@ INSERT INTO PublishUpdateGame VALUES(7, 5, '2000-01-01');
 INSERT INTO PublishUpdateGame VALUES(8, 6, '2000-01-01');
 INSERT INTO PublishUpdateGame VALUES(9, 3, '2000-01-01');
 
-INSERT INTO ReceivesGoldMember_Gift VALUES(1, 5, '2020-10-01');
-INSERT INTO ReceivesGoldMember_Gift VALUES(2, 4, '2020-10-01');
-INSERT INTO ReceivesGoldMember_Gift VALUES(3, 2, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(5, 1, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(4, 2, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(2, 3, '2020-10-01');

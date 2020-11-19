@@ -2,6 +2,26 @@
 include 'connect.php';
 session_start();
 $id = $_SESSION['currentID'];
+if (isset($_POST["deviceName"])) {
+    $conn = OpenCon();
+    if (isset($_POST['deviceName']) and isset($_POST['insert'])) {
+        $dName = $_POST['deviceName'];
+        
+        
+        $dId = 0;
+        for ($i = 1; $i <= 2; $i++) {
+            $n = floor(rand(1, 500) * 20 + 10);
+            $dId = $dId + $n;
+        }
+
+        $sql = "INSERT INTO HasPlayer_Device (playerID, deviceID, deviceName) VALUES ('$id','$dId','$dName')";
+    } 
+    if ($conn->multi_query($sql) === TRUE) {
+        header('location:Player-Device.php');
+    } else {
+        echo "Error : " . $conn->error;
+    }
+}
 ?>
 
 
@@ -93,7 +113,12 @@ $id = $_SESSION['currentID'];
                 } else {
                     echo "No account";
                 }
-                ?>
+            ?>
+             <form method="POST" action="Player-Device.php">
+                <h2>Add New Device</h2>
+                Device Name: <input type="text" name="deviceName"> <br/><br/>
+                <input class="Button" type="submit" value="Add" name="insert"/> <br/><br/>
+             </form>
         </div>
     </div>
 </div>
