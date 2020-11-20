@@ -250,7 +250,7 @@ function typeList()
                             echo "<table border=1>";
                             echo "<tr><th>Location</th><th>Max time spent (hours)</th></tr>";
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr> <td>" . $row["gameName"] . "</td> <td>" . $row["MAX(H.timeSpent)"] . "</td> </tr>";
+                                echo "<tr> <td>" . $row["gameName"] . "</td> <td>" . $row["AVG(H.timeSpent)"] . "</td> </tr>";
                             }
                             echo "</table>";
                         } else {
