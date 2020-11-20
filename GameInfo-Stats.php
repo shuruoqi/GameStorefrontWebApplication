@@ -91,6 +91,49 @@ function typeList()
         <div class="Content">
             <form method="POST" action="GameInfo-Stats.php">
                 <h2>Global gaming stats</h2>
+                <div class = "Most popular">
+                Display Player who owns all games of the selected type.
+                <?php
+                    $conn = OpenCon();
+                    $query = "SELECT DISTINCT gameType FROM Game ";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        echo "<select name=GType>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['gameType'] . "'>" . $row['gameType'] . "</option>";
+                        }
+                        echo "</select>";
+                    }
+                ?>
+                <input class="Button" type="submit" value="Search" name="dSearch"/> <br/><br/>
+                <?php
+                    $conn = OpenCon();
+                    if (isset($_POST['dSearch'])) {
+                        $GType = $_POST['GType'];
+                        $query = "SELECT P.username 
+                                    FROM Player P
+                                    WHERE NOT EXISTS (
+                                       (SELECT G1.gameID FROM Game G1 WHERE G1.gameType = '$GType')
+                                       EXCEPT
+                                       (SELECT H.gameID 
+                                        FROM HasPlayer_Game_Accomplishment H, Game G2 
+                                        WHERE H.playerID = P.playerID)
+                                    )";
+                        $result = $conn->query($query);
+                        if ($result->num_rows > 0) {
+                            echo $_POST['GType'];
+                            echo "<table border=1>";
+                            echo "<tr><th>Player Name</th></tr>";
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr> <td>" . $row["username"] . "</td></tr>";
+                            }
+                            echo "</table>";
+                        } else {
+                            echo "No records";
+                        }
+                    }
+                ?>
+                </div>
                 <div class="MaxLength">
                     Max gaming length of
                     <?php
@@ -193,21 +236,21 @@ function typeList()
                     $conn = OpenCon();
                     if (isset($_POST['aSearch'])) {
                         $GameType = $_POST['GameType'];
-                        $query = "SELECT G.name, AVG(H.timeSpent)  
+                        $query = "SELECT G.gameName, AVG(H.timeSpent)  
                                     FROM HasPlayer_Game_Accomplishment H, Game G 
                                     WHERE H.gameID = G.gameID AND G.gameType = '$GameType' 
-                                    GROUP BY G.name 
+                                    GROUP BY G.gameName 
                                     HAVING AVG(H.timeSpent) >= ALL(SELECT AVG(H1.timeSpent) 
                                                                     FROM HasPlayer_Game_Accomplishment H1, Game G1 
                                                                     WHERE H1.gameID = G1.gameID AND G1.gameType = '$GameType' 
-                                                                    GROUP BY G1.name)";
+                                                                    GROUP BY G1.gameName)";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {
                             echo $_POST['GameType'];
                             echo "<table border=1>";
                             echo "<tr><th>Location</th><th>Max time spent (hours)</th></tr>";
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr> <td>" . $row["name"] . "</td> <td>" . $row["MAX(H.timeSpent)"] . "</td> </tr>";
+                                echo "<tr> <td>" . $row["gameName"] . "</td> <td>" . $row["MAX(H.timeSpent)"] . "</td> </tr>";
                             }
                             echo "</table>";
                         } else {
