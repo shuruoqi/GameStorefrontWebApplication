@@ -84,7 +84,7 @@ INSERT INTO Game VALUES(2, 'Dont Starve', 'RPG', '2.0');
 INSERT INTO Game VALUES(3, 'Fall Guys', 'Action', '1.0');
 INSERT INTO Game VALUES(4, 'Human Fall Flat', 'Puzzle', '1.5');
 INSERT INTO Game VALUES(5, 'Oxygen Not Included', 'Strategy', '1.0');
-INSERT INTO Game VALUES(6, 'Plants vs Zombies', 'Strategt', '1.0');
+INSERT INTO Game VALUES(6, 'Plants vs Zombies', 'Strategy', '1.0');
 INSERT INTO Game VALUES(7, 'PUBG', 'Shooting', '3.0');
 INSERT INTO Game VALUES(8, 'Stardew Valley', 'Simulation', '3.0');
 INSERT INTO Game VALUES(9, 'The Sims', 'Simulation', '3.0');
