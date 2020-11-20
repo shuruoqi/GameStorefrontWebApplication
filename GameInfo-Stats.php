@@ -169,21 +169,21 @@ function typeList()
                     $conn = OpenCon();
                     if (isset($_POST['aSearch'])) {
                         $GameType = $_POST['GameType'];
-                        $query = "SELECT G.name, MAX(H.timeSpent)  
+                        $query = "SELECT G.gameName, MAX(H.timeSpent)  
                                     FROM HasPlayer_Game_Accomplishment H, Game G 
                                     WHERE H.gameID = G.gameID AND G.gameType = '$GameType' 
-                                    GROUP BY G.name 
+                                    GROUP BY G.gameName 
                                     HAVING AVG(H.timeSpent) >= ALL(SELECT AVG(H1.timeSpent) 
                                                                     FROM HasPlayer_Game_Accomplishment H1, Game G1 
                                                                     WHERE H1.gameID = G1.gameID AND G1.gameType = '$GameType' 
-                                                                    GROUP BY G1.name)";
+                                                                    GROUP BY G1.gameName)";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {
                             echo $_POST['GameType'];
                             echo "<table border=1>";
                             echo "<tr><th>Location</th><th>Max time spent (hours)</th></tr>";
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr> <td>" . $row["name"] . "</td> <td>" . $row["MAX(H.timeSpent)"] . "</td> </tr>";
+                                echo "<tr> <td>" . $row["gameName"] . "</td> <td>" . $row["MAX(H.timeSpent)"] . "</td> </tr>";
                             }
                             echo "</table>";
                         } else {
