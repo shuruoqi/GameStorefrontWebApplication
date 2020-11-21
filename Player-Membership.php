@@ -26,7 +26,6 @@ if (isset($_POST["uAccountID"])) {
     }
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +119,6 @@ if (isset($_POST["uAccountID"])) {
                     ?>
                 </div>
                 <br/><br/>
-                <!-- Upgrade to Golden Member: $100 (A lifetime guarantee!) <br/><br/> -->
                 <?php
                 if($current == "Regular Member"){
                     echo 'Upgrade to Golden Member: $100 (A lifetime guarantee!) <br/><br/>';
