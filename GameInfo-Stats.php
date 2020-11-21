@@ -188,7 +188,8 @@ include 'connect.php';
                                     HAVING MIN(H.timeSpent)>='$length'";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {
-                            echo $_POST['nGameName'];
+                            echo $_POST['nGameName'] . "---";
+                            echo "min gaming length " . $_POST['length'] . " hours";
                             echo "<table border=1>";
                             echo "<tr><th>Location</th><th>Num of players</th></tr>";
                             while ($row = $result->fetch_assoc()) {
