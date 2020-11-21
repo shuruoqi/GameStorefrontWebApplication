@@ -57,9 +57,16 @@ if (isset($_POST["gName"]) and isset($_POST["newVer"])) {
         <div class="Content">
             <form method="POST" action="Producer-MyGames.php">
                 <h2>My Games</h2>
+                <!-- <select name="location">
+                    <optgroup label="location">
+                        <option value=Don't starve>Don't starve</option>
+                        <option value=Stardew Valley>Stardew Valley</option>
+                        <option value=Oxygen Not Included>Oxygen Not Included</option>
+                    </optgroup>
+                </select> <br/><br/> -->
                 <?php
                 $conn = OpenCon();
-                $query = "SELECT g.gameName FROM Game g, PublishUpdateGame p WHERE p.companyID = '$id' AND p.gameID = g.gameID";
+                $query = "SELECT g.gameName, g.gameID FROM Game g, PublishUpdateGame p WHERE p.companyID = '$id' AND p.gameID = g.gameID";
                 $result = $conn->query($query);
                 if ($result->num_rows > 0) {
                     echo "<select name=gName>";
@@ -68,15 +75,18 @@ if (isset($_POST["gName"]) and isset($_POST["newVer"])) {
                     }
                     echo "</select>";
                 } else {
-                    echo "No games";
+                    echo "No account";
                 }
                 ?>
+
                 <div class="Write">
                     Update Version:
                     <input type="text" name="newVer">
                     <input class="Button" type="submit" value="Update" name="update"/> <br/><br/>
+                </a>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
