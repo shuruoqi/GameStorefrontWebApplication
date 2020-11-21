@@ -10,4 +10,4 @@ Setting up the project
 - Copy and paste all of create-tables.sql to the SQL tab of project, click go to create all tables
 - Copy and paste all of project-insert.sql to the SQL tab of project, click go to insert default data
 - Copy contents of the project repo to htdocs directory of XAMPP installation path
-- Start the application by visiting the sign up/ sign in page at localhost/SignUp.php or localhost/SignIn.php
+- Start the application by visiting the sign in page at localhost/SignIn.php
