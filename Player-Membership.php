@@ -40,7 +40,7 @@ if (isset($_POST["uAccountID"])) {
 <div id="Centered">
 
     <div class="Header">
-        < img src="ProjectIMG/Header.jpg"/>
+        <img src="ProjectIMG/Header.jpg"/>
     </div>
 
     <div class="MainBox">

@@ -77,7 +77,7 @@ $id = $_SESSION['currentID'];
 
         <div class="Content">
             <h2>Gift</h2>
-            <h3>Gifts you received:<h3>
+            Gifts you received:
             <?php
                 $conn = OpenCon();
                 $query = "SELECT G.giftName, G2.giftValue, R.receivedDate FROM ReceivesGoldMember_Gift R, Gift G, Gift2 G2 WHERE R.playerID = '$id' AND R.giftID = G.giftID AND G.giftName = G2.giftName";
