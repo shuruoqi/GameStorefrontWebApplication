@@ -77,7 +77,7 @@ include 'connect.php';
             <form method="POST" action="GameInfo-Stats.php">
                 <h2>Global gaming stats</h2>
                 <div class="Most popular">
-                    Display Players who owns all games of the selected type.
+                    Display players who owns all games of the selected type.
                     <?php
                     $conn = OpenCon();
                     $query = "SELECT DISTINCT gameType FROM Game ";
