@@ -10,7 +10,7 @@ if (isset($_POST["uAccountID"])) {
         $result = $conn->query($query);
         if ($result->num_rows == 1) {
             echo "Already a gold member!";
-        } else if ($result->num_rows == 0){
+        } else if ($result->num_rows == 0) {
             // $uAccountID = $_POST['uAccountID'];
             $date = date("Y-m-d");
             $sql = "INSERT INTO GoldMember (playerID) VALUES ('$id');";
@@ -48,52 +48,52 @@ if (isset($_POST["uAccountID"])) {
         <div class="SideBar">
             <ul>
                 <li>
-                    <a href=" ">
+                    <a href="Player-Info.php">
                         <span class="iconfont icon-user"></span>
                         <span>Account Info</span>
-                    </a >
+                    </a>
                 </li>
                 <li>
                     <a href="Player-Membership.php">
                         <span class="iconfont icon-membership"></span>
                         <span>Membership</span>
-                    </a >
+                    </a>
                 </li>
                 <li>
                     <a href="Player-MyGames.php">
                         <span class="iconfont icon-game"></span>
                         <span>My Games</span>
-                    </a >
+                    </a>
                 </li>
                 <li>
                     <a href="Player-Bank.php">
                         <span class="iconfont icon-bank"></span>
                         <span>Bank Account</span>
-                    </a >
+                    </a>
                 </li>
                 <li>
                     <a href="Player-Device.php">
                         <span class="iconfont icon-device"></span>
                         <span>Device</span>
-                    </a >
+                    </a>
                 </li>
                 <li>
                     <a href="Player-Gift.php">
                         <span class="iconfont icon-gift"></span>
                         <span>Gift</span>
-                    </a >
+                    </a>
                 </li>
                 <li>
                     <a href="Player-Friends.php">
                         <span class="iconfont icon-friends"></span>
                         <span>Friends</span>
-                    </a >
+                    </a>
                 </li>
                 <li>
                     <a href="Player-AllGames.php">
                         <span class="iconfont icon-all"></span>
                         <span>All Games</span>
-                    </a >
+                    </a>
                 </li>
             </ul>
         </div>
@@ -120,7 +120,7 @@ if (isset($_POST["uAccountID"])) {
                 </div>
                 <br/><br/>
                 <?php
-                if($current == "Regular Member"){
+                if ($current == "Regular Member") {
                     echo 'Upgrade to Golden Member: $100 (A lifetime guarantee!) <br/><br/>';
                     $conn = OpenCon();
                     $query = "SELECT accountID FROM HasBankAccount_Player H WHERE H.playerID = '$id'";
@@ -136,7 +136,7 @@ if (isset($_POST["uAccountID"])) {
                     }
                     echo '<input type="submit" class="Button" name="upgrade" value="Upgrade">';
                     // <input class="Button" type="submit" value="Upgrade" name="upgrade"/>
-                }?><br/><br/>
+                } ?><br/><br/>
             </form>
         </div>
     </div>
