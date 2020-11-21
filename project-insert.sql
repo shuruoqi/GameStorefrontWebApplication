@@ -9,7 +9,7 @@ INSERT INTO BankAccount VALUES('8888-8888-8888-8888', 'CIBC', '2021-10-24');
 INSERT INTO BankAccount VALUES('9999-9999-9999-9999', 'RBC', '2024-10-23');
 INSERT INTO BankAccount VALUES('1234-5678-1234-5678', 'Scotia', '2021-10-23');
 
-INSERT INTO Player VALUES(1, 'anon1', '12345', 'Asia');
+INSERT INTO Player VALUES(1, 'test', 'test', 'Asia');
 INSERT INTO Player VALUES(2, 'john', 's122135', 'Asia');
 INSERT INTO Player VALUES(3, 'jane', 'err45', 'Asia');
 INSERT INTO Player VALUES(4, 'smith', '67675u7', 'Asia');
@@ -273,3 +273,9 @@ INSERT INTO PublishUpdateGame VALUES(9, 3, '2000-01-01');
 INSERT INTO ReceivesGoldMember_Gift VALUES(5, 1, '2020-10-01');
 INSERT INTO ReceivesGoldMember_Gift VALUES(4, 2, '2020-10-01');
 INSERT INTO ReceivesGoldMember_Gift VALUES(2, 3, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(3, 4, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(1, 5, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(2, 6, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(5, 7, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(3, 8, '2020-10-01');
+INSERT INTO ReceivesGoldMember_Gift VALUES(2, 9, '2020-10-01');
