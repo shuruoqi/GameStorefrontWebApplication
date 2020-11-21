@@ -108,14 +108,21 @@ if (isset($_POST["comment"])) {
                 }
                 echo "</table>";
             } else {
-                echo "No comments";
+                echo "No comment";
             }
             ?>
 
-            <form method="POST" action="GameInfo-HumanFallFlat.php"> <!--refresh page when submitted-->
-                <input type="text" name="comment" placeholder="Comment..."/>
-                <input class="Button" type="submit" value="Submit" name="insert"/> <br/><br/>
-            </form>
+            <?php
+            $conn = OpenCon();
+            $query = "SELECT * FROM HasPlayer_Game_Accomplishment WHERE playerID = '$id' and gameID = '4'";
+            $result = $conn->query($query);
+            if ($result->num_rows > 0) {
+                echo '<form method="POST" action="GameInfo-HumanFallFlat.php">';
+                echo '<input type="text" name="comment" placeholder="Comment..."/>';
+                echo '<input class="Button" type="submit" value="Submit" name="insert"/> <br/><br/>';
+                echo '</form>';
+            }
+            ?>
 
             <?php
             $conn = OpenCon();
