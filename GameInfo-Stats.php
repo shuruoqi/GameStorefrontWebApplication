@@ -119,6 +119,7 @@ include 'connect.php';
                     }
                     ?>
                 </div>
+                <br/><br/>
                 <div class="MaxLength">
                     Max gaming length of
                     <?php
@@ -180,7 +181,7 @@ include 'connect.php';
                     if (isset($_POST['length']) and isset($_POST['nSearch'])) {
                         $GameName = $_POST['nGameName'];
                         $length = $_POST['length'];
-                        $query = "SELECT COUNT(*), P.location 
+                        $query = "SELECT COUNT(DISTINCT P.playerID), P.location 
                                     FROM HasPlayer_Game_Accomplishment H, Player P, Game G 
                                     WHERE H.playerID = P.playerID AND H.gameID = G.gameID AND G.gameName = '$GameName' 
                                     GROUP BY P.location 
@@ -191,7 +192,7 @@ include 'connect.php';
                             echo "<table border=1>";
                             echo "<tr><th>Location</th><th>Num of players</th></tr>";
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr> <td>" . $row["location"] . "</td> <td>" . $row["COUNT(*)"] . "</td> </tr>";
+                                echo "<tr> <td>" . $row["location"] . "</td> <td>" . $row["COUNT(DISTINCT P.playerID)"] . "</td> </tr>";
                             }
                             echo "</table>";
                         } else {
