@@ -101,7 +101,6 @@ INSERT INTO Accomplishment VALUES(3, 'bronze');
 INSERT INTO Accomplishment VALUES(4, 'diamond'); 
 INSERT INTO Accomplishment VALUES(5, 'ultimate');
 
---Asia player
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(1, 1, 1, 5, 50, '2020-10-05');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(1, 2, 2, 3, 100, '2020-11-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(1, 3, 1, 2, 150, '2020-12-01');
@@ -124,7 +123,6 @@ INSERT INTO HasPlayer_Game_Accomplishment VALUES(6, 4, 2, 1, 130, '2020-10-09');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(6, 5, 1, 1, 100, '2020-10-14');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(6, 6, 1, 1, 170, '2020-10-15');
 
---Africa
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(7, 1, 1, 1, 120, '2020-10-14');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(7, 2, 2, 2, 210, '2020-02-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(7, 3, 3, 3, 10, '2020-03-01');
@@ -144,7 +142,6 @@ INSERT INTO HasPlayer_Game_Accomplishment VALUES(9, 5, 1, 4, 60, '2020-04-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(9, 6, 2, 5, 20, '2020-05-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(9, 7, 3, 1, 30, '2020-06-01');
 
---EU
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(10, 1, 1, 1, 120, '2020-10-14');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(10, 2, 2, 2, 210, '2020-02-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(10, 3, 3, 3, 10, '2020-03-01');
@@ -164,7 +161,6 @@ INSERT INTO HasPlayer_Game_Accomplishment VALUES(12, 5, 1, 4, 60, '2020-04-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(12, 6, 2, 5, 20, '2020-05-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(12, 7, 3, 1, 30, '2020-06-01');
 
---NA
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(13, 1, 1, 1, 120, '2020-10-14');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(13, 2, 2, 2, 210, '2020-02-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(13, 3, 3, 3, 10, '2020-03-01');
@@ -189,7 +185,6 @@ INSERT INTO HasPlayer_Game_Accomplishment VALUES(16, 7, 1, 4, 60, '2020-04-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(16, 8, 2, 5, 20, '2020-05-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(16, 9, 3, 1, 30, '2020-06-01');
 
---SA
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(17, 1, 1, 1, 120, '2020-10-14');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(17, 2, 2, 2, 210, '2020-02-01');
 INSERT INTO HasPlayer_Game_Accomplishment VALUES(17, 3, 3, 3, 10, '2020-03-01');

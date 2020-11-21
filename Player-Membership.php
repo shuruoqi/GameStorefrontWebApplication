@@ -6,16 +6,19 @@ $id = $_SESSION['currentID'];
 if (isset($_POST["uAccountID"])) {
     $conn = OpenCon();
     if (isset($_POST['upgrade'])) {
-        $sql = "SELECT playerID FROM GoldMember WHERE playerID = '$id'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
+        $query = "SELECT playerID FROM GoldMember WHERE playerID = '$id'";
+        $result = $conn->query($query);
+        if ($result->num_rows == 1) {
             echo "Already a gold member!";
-        } else {
-            $uAccountID = $_POST['uAccountID'];
+        } else if ($result->num_rows == 0){
+            // $uAccountID = $_POST['uAccountID'];
+            $date = date("Y-m-d");
             $sql = "INSERT INTO GoldMember (playerID) VALUES ('$id');";
+            $sql .= "INSERT INTO ReceivesGoldMember_Gift (giftID, playerID,receivedDate) VALUES ('1','$id','$date');";
+            $sql .= "INSERT INTO ReceivesGoldMember_Gift (giftID, playerID,receivedDate) VALUES ('2','$id','$date');";
             $sql .= "DELETE FROM RegularMember WHERE playerID = '$id'";
         }
-    } 
+    }
     if ($conn->multi_query($sql) === TRUE) {
         header('location:Player-Membership.php');
     } else {
@@ -32,13 +35,13 @@ if (isset($_POST["uAccountID"])) {
     <meta charset="UTF-8">
     <link rel="stylesheet" href="CSS/Sidebar.css"/>
     <link rel="stylesheet" href="CSS/iconfont-Sidebar.css"/>
-    <title>Membership</title>
+    <title>User Information</title>
 </head>
 <body>
 <div id="Centered">
 
     <div class="Header">
-        <img src="ProjectIMG/Header.jpg"/>
+        < img src="ProjectIMG/Header.jpg"/>
     </div>
 
     <div class="MainBox">
@@ -46,52 +49,52 @@ if (isset($_POST["uAccountID"])) {
         <div class="SideBar">
             <ul>
                 <li>
-                    <a href="Player-Info.php">
+                    <a href=" ">
                         <span class="iconfont icon-user"></span>
                         <span>Account Info</span>
-                    </a>
+                    </a >
                 </li>
                 <li>
                     <a href="Player-Membership.php">
                         <span class="iconfont icon-membership"></span>
                         <span>Membership</span>
-                    </a>
+                    </a >
                 </li>
                 <li>
                     <a href="Player-MyGames.php">
                         <span class="iconfont icon-game"></span>
                         <span>My Games</span>
-                    </a>
+                    </a >
                 </li>
                 <li>
                     <a href="Player-Bank.php">
                         <span class="iconfont icon-bank"></span>
                         <span>Bank Account</span>
-                    </a>
+                    </a >
                 </li>
                 <li>
                     <a href="Player-Device.php">
                         <span class="iconfont icon-device"></span>
                         <span>Device</span>
-                    </a>
+                    </a >
                 </li>
                 <li>
                     <a href="Player-Gift.php">
                         <span class="iconfont icon-gift"></span>
                         <span>Gift</span>
-                    </a>
+                    </a >
                 </li>
                 <li>
                     <a href="Player-Friends.php">
                         <span class="iconfont icon-friends"></span>
                         <span>Friends</span>
-                    </a>
+                    </a >
                 </li>
                 <li>
                     <a href="Player-AllGames.php">
                         <span class="iconfont icon-all"></span>
                         <span>All Games</span>
-                    </a>
+                    </a >
                 </li>
             </ul>
         </div>
@@ -107,31 +110,35 @@ if (isset($_POST["uAccountID"])) {
                     $result = $conn->query($query);
                     if ($result->num_rows > 0) {
                         // echo "<class="."Membership"." type="."text". "value="."Regular Member" ."readonly/>";
-                        echo "Regular Member";
+                        echo '<input type="text" class="Membership" name="Regular Member" value="Regular Member" readonly>';
+                        $current = "Regular Member";
                     } else {
                         // echo "<class="."Membership"." type="."text". "value="."Gold Member" ."readonly/>";
-                        echo "Gold Member";
+                        echo '<input type="text" class="Membership" name="Regular Member" value="Gold Member" readonly>';
+                        $current = "Gold Member";
                     }
                     ?>
                 </div>
                 <br/><br/>
-                Upgrade to Golden Member: $100 (A lifetime guarantee!) <br/><br/>
+                <!-- Upgrade to Golden Member: $100 (A lifetime guarantee!) <br/><br/> -->
                 <?php
-                $conn = OpenCon();
-                $query = "SELECT accountID FROM HasBankAccount_Player H WHERE H.playerID = '$id'";
-                $result = $conn->query($query);
-                if ($result->num_rows > 0) {
-                    echo "<select name=uAccountID>";
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['accountID'] . "'>" . $row['accountID'] . "</option>";
+                if($current == "Regular Member"){
+                    echo 'Upgrade to Golden Member: $100 (A lifetime guarantee!) <br/><br/>';
+                    $conn = OpenCon();
+                    $query = "SELECT accountID FROM HasBankAccount_Player H WHERE H.playerID = '$id'";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        echo "<select name=uAccountID>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['accountID'] . "'>" . $row['accountID'] . "</option>";
+                        }
+                        echo "</select>";
+                    } else {
+                        echo "No account";
                     }
-                    echo "</select>";
-                } else {
-                    echo "No account";
-                }
-                ?><br/><br/>
-                <input class="Button" type="submit" value="Upgrade" name="upgrade"/>
-                </a>
+                    echo '<input type="submit" class="Button" name="upgrade" value="Upgrade">';
+                    // <input class="Button" type="submit" value="Upgrade" name="upgrade"/>
+                }?><br/><br/>
             </form>
         </div>
     </div>
