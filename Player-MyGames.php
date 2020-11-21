@@ -105,7 +105,7 @@ if (isset($_POST['gID'])) {
                         echo "<tr><th>Game Name</th><th>Game Type</th><th>Version</th></tr>";
 
                         while ($row = $result->fetch_assoc()) {
-                            echo "<tr> <td>" . "<a href=". "GameInfo-".str_replace(' ', '', $row["gameName"]).".php>".$row["gameName"]. "</a>". "</td> <td>" . $row["gameType"] . "</td> <td>" . $row["latestVersion"] . "</td> </tr>"; 
+                            echo "<tr> <td>" . "<a href=". "GameInfo-".str_replace(' ', '', $row["gameName"]).".php>".$row["gameName"]. "</a>". "</td> <td>" . $row["gameType"] . "</td> <td>" . $row["latestVersion"] . "</td> </tr>";
                         }
                         echo "</table>";
                     } else {
@@ -115,7 +115,7 @@ if (isset($_POST['gID'])) {
                 <h2>Buy Games</h2>
                 <?php
                     $conn = OpenCon();
-                    $query = "SELECT DISTINCT g.gameName, g.gameID FROM Game g, HasPlayer_Game_Accomplishment H WHERE H.playerID = '$id' AND g.gameID <> H.gameID";
+                    $query = "SELECT DISTINCT g.gameName, g.gameID FROM Game g, HasPlayer_Game_Accomplishment H WHERE H.playerID = '$id' AND g.gameID NOT IN (SELECT H.gameID FROM HasPlayer_Game_Accomplishment H WHERE H.playerID = '$id')";
                     $result = $conn->query($query);
                     if ($result->num_rows > 0) {
                         echo "<select name=gID>";
