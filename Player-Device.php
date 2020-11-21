@@ -6,8 +6,6 @@ if (isset($_POST["deviceName"])) {
     $conn = OpenCon();
     if (isset($_POST['deviceName']) and isset($_POST['insert'])) {
         $dName = $_POST['deviceName'];
-        
-        
         $dId = 0;
         for ($i = 1; $i <= 2; $i++) {
             $n = floor(rand(1, 500) * 20 + 10);

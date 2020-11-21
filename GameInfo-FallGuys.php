@@ -108,7 +108,7 @@ if (isset($_POST["comment"])) {
                 }
                 echo "</table>";
             } else {
-                echo "No comment";
+                echo "No comments";
             }
             ?>
 

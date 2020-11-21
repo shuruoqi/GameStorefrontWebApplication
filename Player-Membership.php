@@ -32,7 +32,7 @@ if (isset($_POST["uAccountID"])) {
     <meta charset="UTF-8">
     <link rel="stylesheet" href="CSS/Sidebar.css"/>
     <link rel="stylesheet" href="CSS/iconfont-Sidebar.css"/>
-    <title>User Information</title>
+    <title>Membership</title>
 </head>
 <body>
 <div id="Centered">

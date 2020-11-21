@@ -1,20 +1,5 @@
 <?php
 include 'connect.php';
-
-function typeList()
-{
-    $conn = OpenCon();
-    $query = "SELECT DISTINCT gameType FROM Game ";
-    $result = $conn->query($query);
-    if ($result->num_rows > 0) {
-        echo "<select name=GameType>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row['gameType'] . "'>" . $row['gameType'] . "</option>";
-        }
-        echo "</select>";
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -91,9 +76,9 @@ function typeList()
         <div class="Content">
             <form method="POST" action="GameInfo-Stats.php">
                 <h2>Global gaming stats</h2>
-                <div class = "Most popular">
-                Display Player who owns all games of the selected type.
-                <?php
+                <div class="Most popular">
+                    Display players who owns all games of the selected type.
+                    <?php
                     $conn = OpenCon();
                     $query = "SELECT DISTINCT gameType FROM Game ";
                     $result = $conn->query($query);
@@ -104,9 +89,9 @@ function typeList()
                         }
                         echo "</select>";
                     }
-                ?>
-                <input class="Button" type="submit" value="Search" name="dSearch"/> <br/><br/>
-                <?php
+                    ?>
+                    <input class="Button" type="submit" value="Search" name="dSearch"/> <br/><br/>
+                    <?php
                     $conn = OpenCon();
                     if (isset($_POST['dSearch'])) {
                         $GType = $_POST['GType'];
@@ -132,7 +117,7 @@ function typeList()
                             echo "No records";
                         }
                     }
-                ?>
+                    ?>
                 </div>
                 <div class="MaxLength">
                     Max gaming length of
